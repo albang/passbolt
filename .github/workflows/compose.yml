@@ -1,4 +1,4 @@
-name: Pylint
+name: Test compose
 
 on: [push]
 
@@ -13,3 +13,10 @@ jobs:
     - uses: adambirds/docker-compose-action@v1.3.0
       with:
         compose-file: "docker-compose.yml"
+        test-container: helloworld
+        test-command: "su -m -c \"/usr/share/php/passbolt/bin/cake \
+                                passbolt register_user \
+                                -u <your@email.com> \
+                                -f <yourname> \
+                                -l <surname> \
+                                -r admin\" -s /bin/sh www-data"
