@@ -14,4 +14,4 @@ jobs:
       with:
         compose-file: "docker-compose.yml"
         test-container: passbolt
-        test-command: "su  -c \"/usr/share/php/passbolt/bin/cake passbolt register_user  -u your@email.com -f yourname -l surname  -r admin\" -s /bin/sh www-data"
+        test-command: "su  -c \"/usr/share/php/passbolt/bin/cake passbolt register_user  -u your@email.com -f yourname -l surname  -r admin\" www-data"
