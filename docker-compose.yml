@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  db:
+  dbpassbolt:
     image: mariadb:10.11
     restart: unless-stopped
     environment:
@@ -11,19 +11,28 @@ services:
     volumes:
       - database_volume:/var/lib/mysql
 
+  smtp:
+    restart: unless-stopped
+    image: docker.io/reachfive/fake-smtp-server
+
+
+
   passbolt:
     image: passbolt/passbolt:latest-ce
     #Alternatively you can use rootless:
     #image: passbolt/passbolt:latest-ce-non-root
     restart: unless-stopped
     depends_on:
-      - db
+      - dbpassbolt
+      - smtp
     environment:
       APP_FULL_BASE_URL: https://passbolt.local
-      DATASOURCES_DEFAULT_HOST: "db"
+      DATASOURCES_DEFAULT_HOST: "dbpassbolt"
       DATASOURCES_DEFAULT_USERNAME: "passbolt"
       DATASOURCES_DEFAULT_PASSWORD: "P4ssb0lt"
       DATASOURCES_DEFAULT_DATABASE: "passbolt"
+      EMAIL_TRANSPORT_DEFAULT_HOST: "smtp"
+      EMAIL_TRANSPORT_DEFAULT_PORT: "1025"
     volumes:
       - gpg_volume:/etc/passbolt/gpg
       - jwt_volume:/etc/passbolt/jwt
@@ -32,7 +41,7 @@ services:
         "/usr/bin/wait-for.sh",
         "-t",
         "0",
-        "db:3306",
+        "dbpassbolt:3306",
         "--",
         "/docker-entrypoint.sh",
       ]
@@ -47,3 +56,4 @@ volumes:
   database_volume: {}
   gpg_volume: {}
   jwt_volume: {}
+
