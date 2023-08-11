@@ -2,12 +2,15 @@ import unittest
 import os
 from passbolt.passbolt import passbolt
 
-key = os.environ.get('KEY')
+key = os.environ.get('keypath')
 passphrase = os.environ.get('PASSPHRASE')
 uri = os.environ.get('URI')
 print()
-key = open("private.asc", "r").read()
-Passbolt = passbolt(key, passphrase, uri,verify=False)
+key  = os.environ.get('KEY')
+
+Passbolt = passbolt(key, passphrase, uri)
+
+Passbolt = passbolt(privatekey=key, passphrase=passphrase,apiurl = uri)
 
 class TestPasswordMethods(unittest.TestCase):
 
