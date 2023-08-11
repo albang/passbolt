@@ -2,11 +2,11 @@ import unittest
 import os
 from passbolt.passbolt import passbolt
 
-key = open(os.environ.get('keypath'), "r").read()
-passphrase = os.environ.get('passphrase')
-uri = os.environ.get('uri')
+key = os.environ.get('KEY')
+passphrase = os.environ.get('PASSPHRASE')
+uri = os.environ.get('URI')
 
-Passbolt = passbolt(key, passphrase, uri)
+Passbolt = passbolt(key, passphrase, uri,verify=False)
 
 class TestPasswordMethods(unittest.TestCase):
 
@@ -29,6 +29,20 @@ class TestPasswordMethods(unittest.TestCase):
     def test_4_deletepassword(self):
         password = Passbolt.deletepassword("pytesting1", "pytesting1")
         self.assertEqual(password, "The resource has been deleted successfully.")
+
+    def test_5_createpassword(self):
+        password = Passbolt.createpassword("[pytesting] brackets", "asdf", "pytesting", "testing.com", "pytesting")
+        self.assertEqual(password, "The resource has been added successfully.")
+
+    def test_6_getpassword(self):
+        password = Passbolt.getpassword("[pytesting] brackets", use_regex=False)
+        self.assertEqual(password[0].name, "[pytesting] brackets")
+
+    def test_7_deletepassword(self):
+        password = Passbolt.deletepassword("[pytesting] brackets", "pytesting1")
+        self.assertEqual(password, "The resource has been deleted successfully.")
+
+
 
 if __name__ == '__main__':
     unittest.main()
