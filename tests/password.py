@@ -5,8 +5,8 @@ from passbolt.passbolt import passbolt
 key = os.environ.get('KEY')
 passphrase = os.environ.get('PASSPHRASE')
 uri = os.environ.get('URI')
-
-Passbolt = passbolt(key, passphrase, uri)
+print()
+Passbolt = passbolt(uri,key, passphrase, uri,verify=False)
 
 class TestPasswordMethods(unittest.TestCase):
 
