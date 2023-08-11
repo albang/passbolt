@@ -41,6 +41,7 @@ jobs:
       run: |
         pwd
         ls
+        echo  $KEY > ./tests/passbolt_private.asc 
         echo "PYTHONPATH=$PYTHONPATH:./" >> $GITHUB_ENV
         python -m unittest discover -s ./tests
         python -m pytest ./tests/password.py
