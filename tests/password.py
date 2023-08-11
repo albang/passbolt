@@ -6,7 +6,7 @@ key = os.environ.get('keypath')
 passphrase = os.environ.get('PASSPHRASE')
 uri = os.environ.get('URI')
 print()
-key  = os.environ.get('KEY')
+key  = os.environ.get('KEY').encode('utf-8')
 
 Passbolt = passbolt(key, passphrase, uri)
 
