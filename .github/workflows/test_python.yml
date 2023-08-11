@@ -36,13 +36,14 @@ jobs:
 
     - name: Test with pytest
       env:
-          KEY: ${{ secrets.PRIVATE_KEY }}
+          KEY: | 
+            ${{ secrets.PRIVATE_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
           URI: ${{ vars.URI }}
       run: |
         pwd
         ls
-        echo  "$KEY" > ./tests/passbolt_private.asc 
+        echo  "$KEY" > "./tests/passbolt_private.asc"
         echo "PYTHONPATH=$PYTHONPATH:./" >> $GITHUB_ENV
         python -m unittest discover -s ./tests
         python -m pytest ./tests/password.py
