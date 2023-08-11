@@ -6,6 +6,7 @@ key = os.environ.get('KEY')
 passphrase = os.environ.get('PASSPHRASE')
 uri = os.environ.get('URI')
 print()
+key = open("private.asc", "r").read()
 Passbolt = passbolt(key, passphrase, uri,verify=False)
 
 class TestPasswordMethods(unittest.TestCase):
