@@ -37,6 +37,7 @@ jobs:
       env:
           KEY: ${{ secrets.PRIVATE_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
+          URI: ${{ env.URI }}
       run: |
         pwd
         ls
