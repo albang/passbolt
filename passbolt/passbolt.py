@@ -20,6 +20,7 @@ class passbolt:
             # Importing our private key
             self.imported_keys = self.gpg.import_keys(privatekey)
             # Getting the fingerprint of our first privatekey
+            print(self.imported_keys)
             self.keyfingerprint = self.imported_keys.fingerprints[0]
 
         self.apiurl = apiurl
@@ -192,7 +193,7 @@ class passbolt:
             group["modified"],
             group["modified_by"]))
 
-    def getpassword(self, name, username=None): 
+    def getpassword(self, name, username=None, use_regex=True):
 
         resources = self.__req("get", "/resources.json")
         passwords = []
@@ -205,9 +206,11 @@ class passbolt:
                 if not resource["name"] in name:
                     continue
                 username = name[resource["name"]]
-            elif not fnmatch.fnmatch(resource["name"], name):
+            elif use_regex:
+                if not fnmatch.fnmatch(resource["name"], name):
+                    continue
+            elif resource["name"] != name:
                 continue
-
             if username and resource["username"] != username:
                 continue
 
