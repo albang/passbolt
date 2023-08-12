@@ -42,8 +42,7 @@ jobs:
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
           URI: ${{ vars.URI }}
       run: |
-        pwd
-        ls
+        env
         echo "PYTHONPATH=$PYTHONPATH:./" >> $GITHUB_ENV
         python -m unittest discover -s ./tests
         python -m pytest ./tests/password.py
