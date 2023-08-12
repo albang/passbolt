@@ -42,7 +42,7 @@ class TestPasswordMethods(unittest.TestCase):
         self.assertEqual(password[0].name, "[pytesting] brackets")
 
     def test_7_deletepassword(self):
-        password = Passbolt.deletepassword("[pytesting] brackets", "pytesting1", use_regex=False)
+        password = Passbolt.deletepassword("[pytesting] brackets")
         self.assertEqual(password, "The resource has been deleted successfully.")
 
 
