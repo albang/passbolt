@@ -2,11 +2,10 @@ import unittest
 import os
 from passbolt.passbolt import passbolt
 
-key = os.environ.get('keypath')
+key = os.environ.get('KEY')
 passphrase = os.environ.get('PASSPHRASE')
 uri = os.environ.get('URI')
 print()
-key = open("passbolt_private.asc", "r").read()
 
 Passbolt = passbolt(key, passphrase, uri)
 
