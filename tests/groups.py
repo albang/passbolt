@@ -15,6 +15,13 @@ uri = os.environ.get('URI')
 Passbolt = passbolt(privatekey=key, passphrase=passphrase, apiurl=uri)
 
 class TestPasswordMethods(unittest.TestCase):
+    def setUp(self) -> None:
+        user = Passbolt.createuser("alban+ci@garrigue.me", "Test", "Ing")
+        user2 = Passbolt.createuser("alban+ci2@garrigue.me", "Test", "Ing")
+
+    def tearDown(self) -> None:
+        Passbolt.deleteuser("alban+ci@garrigue.me")
+        Passbolt.deleteuser("alban+ci2@garrigue.me")
 
     def test_0_creategroup(self):
         group = Passbolt.creategroup("pytest", ["alban+ci@garrigue.me"], ["alban+ci2@garrigue.me"])
