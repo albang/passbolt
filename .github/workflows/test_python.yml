@@ -44,4 +44,4 @@ jobs:
       run: |
         env
         echo "PYTHONPATH=$PYTHONPATH:./" >> $GITHUB_ENV
-        python -m pytest ./tests/
+        python -m pytest ./tests/*
