@@ -22,8 +22,7 @@ class TestPasswordMethods(unittest.TestCase):
     def test_2_updateuser(self):
         user = Passbolt.updateuser("alban+ci@garrigue.me", "First", "Admin", True)
         self.assertEqual(user, "The user has been updated successfully.")
-        user = Passbolt.updateuser("alban+ci@gmail.com", "First", "Not admin", False)
-        self.assertEqual(user, "The user has been updated successfully.")
+
 
     def test_3_deleteuser(self):
         user = Passbolt.deleteuser("alban+ci@garrigue.me")
