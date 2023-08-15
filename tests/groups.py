@@ -2,16 +2,22 @@ import unittest
 import os
 from passbolt.passbolt import passbolt
 
-key = open(os.environ.get('keypath'), "r").read()
-passphrase = os.environ.get('passphrase')
-uri = os.environ.get('uri')
+#key = open(os.environ.get('keypath'), "r").read()
+#passphrase = os.environ.get('passphrase')
+#uri = os.environ.get('uri')
 
-Passbolt = passbolt(key, passphrase, uri)
+#Passbolt = passbolt(key, passphrase, uri)
+
+key = os.environ.get('KEY')
+passphrase = os.environ.get('PASSPHRASE')
+uri = os.environ.get('URI')
+
+Passbolt = passbolt(privatekey=key, passphrase=passphrase, apiurl=uri)
 
 class TestPasswordMethods(unittest.TestCase):
 
     def test_0_creategroup(self):
-        group = Passbolt.creategroup("pytest", ["daniel.lynch2016@gmail.com"], ["doghouse475@gmail.com"])
+        group = Passbolt.creategroup("pytest", ["alban+ci@garrigue.me"], ["alban+ci2@garrigue.me"])
         self.assertEqual(group, "The group has been added successfully.")
 
     def test_1_getgroup(self):
