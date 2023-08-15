@@ -32,7 +32,7 @@ class TestPasswordMethods(unittest.TestCase):
         self.assertEqual(group.name, "pytest")
 
     def test_2_updategroup(self):
-        group = Passbolt.updategroup("pytest", ["s1@a.com"], ["s2@a.com"])
+        group = Passbolt.updategroup("pytest", [], ["alban+test@garrigue.me"])
         self.assertEqual(group, "The operation was successful.")
 
     def test_3_deletegroup(self):
