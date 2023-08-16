@@ -21,6 +21,8 @@ class TestPasswordMethods(unittest.TestCase):
     def test_2_sharepassword(self):
         password = Passbolt.sharepassword("pytesting", "pytesting", ["s1@a.com"], ["Users"])
         self.assertEqual(password, "The operation was successful.")
+        password = Passbolt.sharepassword("pytesting", "pytesting", ["alban@garrigue.me"], ["Users"])
+        self.assertEqual(password, "The operation was successful.")
 
     def test_3_updatepassword(self):
         password = Passbolt.updatepassword("pytesting", "asdf1", "pytesting", "pytesting1", "pytesting1", "testing2.com", "pytesting1")
