@@ -2,12 +2,6 @@ import unittest
 import os
 from passbolt.passbolt import passbolt
 
-#key = open(os.environ.get('keypath'), "r").read()
-#passphrase = os.environ.get('passphrase')
-#uri = os.environ.get('uri')
-
-#Passbolt = passbolt(key, passphrase, uri)
-
 key = os.environ.get('key')
 passphrase = os.environ.get('passphrase')
 uri = os.environ.get('uri')
@@ -16,15 +10,15 @@ Passbolt = passbolt(privatekey=key, passphrase=passphrase, apiurl=uri)
 
 class TestPasswordMethods(unittest.TestCase):
     def setUp(self) -> None:
-        user = Passbolt.createuser("alban+ci@garrigue.me", "Test", "Ing")
-        user2 = Passbolt.createuser("alban+ci2@garrigue.me", "Test", "Ing")
+        user = Passbolt.createuser("user@example.com", "Test", "Ing")
+        user2 = Passbolt.createuser("user2@example.com", "Test", "Ing")
 
     def tearDown(self) -> None:
-        Passbolt.deleteuser("alban+ci@garrigue.me")
-        Passbolt.deleteuser("alban+ci2@garrigue.me")
+        Passbolt.deleteuser("user@example.com")
+        Passbolt.deleteuser("user2@example.com")
 
     def test_0_creategroup(self):
-        group = Passbolt.creategroup("pytest", ["alban@garrigue.me"], [])
+        group = Passbolt.creategroup("pytest", ["user@example.com"], [])
         self.assertEqual(group, "The group has been added successfully.")
 
     def test_1_getgroup(self):
@@ -32,7 +26,7 @@ class TestPasswordMethods(unittest.TestCase):
         self.assertEqual(group.name, "pytest")
 
     def test_2_updategroup(self):
-        group = Passbolt.updategroup("pytest", [], ["alban+ci@garrigue.me"])
+        group = Passbolt.updategroup("pytest", [], ["user2@example.com"])
         self.assertEqual(group, "The operation was successful.")
 
     def test_3_deletegroup(self):
