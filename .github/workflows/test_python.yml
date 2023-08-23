@@ -37,10 +37,10 @@ jobs:
 
     - name: Test with pytest
       env:
-          KEY: | 
+          key: | 
             ${{ secrets.PRIVATE_KEY }}
-          PASSPHRASE: ${{ secrets.PASSPHRASE }}
-          URI: ${{ vars.URI }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          uri: ${{ vars.URI }}
       run: |
         echo "PYTHONPATH=$PYTHONPATH:./" >> $GITHUB_ENV
         python -m pytest ./tests/*

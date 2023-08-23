@@ -8,9 +8,9 @@ from passbolt.passbolt import passbolt
 
 #Passbolt = passbolt(key, passphrase, uri)
 
-key = os.environ.get('KEY')
-passphrase = os.environ.get('PASSPHRASE')
-uri = os.environ.get('URI')
+key = os.environ.get('key')
+passphrase = os.environ.get('passphrase')
+uri = os.environ.get('uri')
 
 Passbolt = passbolt(privatekey=key, passphrase=passphrase, apiurl=uri)
 
