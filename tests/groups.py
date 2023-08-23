@@ -11,7 +11,7 @@ Passbolt = passbolt(privatekey=key, passphrase=passphrase, apiurl=uri)
 class TestPasswordMethods(unittest.TestCase):
     def setUp(self) -> None:
         user = Passbolt.createuser("user@example.com", "Test", "Ing")
-        print(user)
+        print(Passbolt.getuser("user@example.com"))
         user2 = Passbolt.createuser("user2@example.com", "Test", "Ing")
 
     def tearDown(self) -> None:
