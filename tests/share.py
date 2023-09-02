@@ -14,8 +14,8 @@ class TestPasswordMethods(unittest.TestCase):
     def setUp(self) -> None:
         password = Passbolt.createpassword("password_to_share", "chut")
 
-    # def tearDown(self) -> None:
-    #    Passbolt.deletepassword("password_to_share")
+    def tearDown(self) -> None:
+        Passbolt.deletepassword("password_to_share")
 
     def test_0_sharepassword(self):
         password = Passbolt.sharepassword("password_to_share", users=[ "alban@garrigue.me" ],permission="Read")
