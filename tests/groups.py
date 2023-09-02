@@ -16,7 +16,7 @@ class TestPasswordMethods(unittest.TestCase):
 
     def tearDown(self) -> None:
         Passbolt.deleteuser("user@example.com")
-        Passbolt.deleteuser("user2@example.com")
+        #Passbolt.deleteuser("user2@example.com")
 
     def test_0_creategroup(self):
         group = Passbolt.creategroup("pytest", ["alban@garrigue.me"], [])
