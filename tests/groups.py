@@ -22,7 +22,7 @@ class TestPasswordMethods(unittest.TestCase):
 
     def test_1_getgroup(self):
         group = Passbolt.getgroup("pytest_action")
-        self.assertEqual(group.name, "pytest")
+        self.assertEqual(group.name, "pytest_action")
 
     def test_2_updategroup(self):
         group = Passbolt.updategroup("pytest_action", [], ["user2@example.com"])
