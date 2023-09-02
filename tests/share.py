@@ -18,7 +18,7 @@ class TestPasswordMethods(unittest.TestCase):
     #    Passbolt.deletepassword("password_to_share")
 
     def test_0_sharepassword(self):
-        user = Passbolt.sharepassword("alban@garrigue.me", "Test", "Ing")
+        user = Passbolt.sharepassword("password_to_share", users=[ "alban@garrigue.me" ],permission="Read")
         self.assertEqual(user, "The user was successfully added. This user now need to complete the setup.")
 
 
