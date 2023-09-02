@@ -19,7 +19,7 @@ class TestPasswordMethods(unittest.TestCase):
         Passbolt.deleteuser("user2@example.com")
 
     def test_0_creategroup(self):
-        group = Passbolt.creategroup("pytest", ["user@example.com"], [])
+        group = Passbolt.creategroup("pytest", ["alban@garrigue.me"], [])
         self.assertEqual(group, "The group has been added successfully.")
 
     def test_1_getgroup(self):
