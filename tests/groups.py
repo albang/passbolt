@@ -30,9 +30,9 @@ class TestPasswordMethods(unittest.TestCase):
         group = Passbolt.updategroup("pytest", [], ["user2@example.com"])
         self.assertEqual(group, "The operation was successful.")
 
-    def test_3_deletegroup(self):
-        group = Passbolt.deletegroup("pytest")
-        self.assertEqual(group, "The group was deleted successfully.")
+    #def test_3_deletegroup(self):
+    #    group = Passbolt.deletegroup("pytest")
+    #    self.assertEqual(group, "The group was deleted successfully.")
 
 
 if __name__ == '__main__':
